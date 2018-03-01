@@ -1,0 +1,10 @@
+<h2 class="text-capitalize text-center">{{ category.name }}</h2>
+<div [class.invisible]="selected >= 0" class="text-center">Selecciona uno por favor</div>
+<div class="d-flex justify-content-center flex-wrap">
+  <app-person *ngFor="let aCandidate of category.candidates; let i = index"
+    [class.selected-p]="selected == i" (click)="select(i)"
+    [name]="aCandidate.name" [number]="aCandidate.number"
+    [color]="aCandidate.color" [image]="aCandidate.image"></app-person>
+  <app-person [class.selected-p]="selected == i" (click)="select(i)"
+    [name]="'Voto en blanco'" [number]="null" [color]="'#fff'" [image]="'blank_vote'"></app-person>
+</div>
