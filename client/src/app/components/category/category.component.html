@@ -13,8 +13,8 @@
     [image]="aCandidate.image"></app-person>
   <app-person [class.selected-p]="selected == 0" (click)="select(0)"
    [ngClass]="{
-      'custom-big': category.candidates.length <=3 ,
-      'custom-normal': category.candidates.length> 3 && category.candidates.length <=5 ,
-      'custom-small': category.candidates.length> 5 }"
+      'custom-big': category.candidates.length <= 3 ,
+      'custom-normal': category.candidates.length > 3 && category.candidates.length <= 5 ,
+      'custom-small': category.candidates.length > 5 }"
     [name]="'Voto en blanco'" [number]="null" [color]="'#fff'" [image]="'blank_vote'"></app-person>
 </div>
