@@ -2,9 +2,19 @@
 <div [class.invisible]="selected >= 0" class="text-center">Selecciona uno por favor</div>
 <div class="d-flex justify-content-center flex-wrap">
   <app-person *ngFor="let aCandidate of category.candidates; let i = index"
-    [class.selected-p]="selected == i" (click)="select(i)"
-    [name]="aCandidate.name" [number]="aCandidate.number"
-    [color]="aCandidate.color" [image]="aCandidate.image"></app-person>
-  <app-person [class.selected-p]="selected == i" (click)="select(i)"
+    [class.selected-p]="selected == aCandidate.number" (click)="select(aCandidate.number)"
+    [ngClass]="{
+      'custom-big': category.candidates.length <= 3,
+      'custom-normal': category.candidates.length > 3 && category.candidates.length <= 5,
+      'custom-small': category.candidates.length > 5
+    }"
+    [name]="aCandidate.name" [lastname]="aCandidate.lastname"
+    [number]="aCandidate.number" [color]="aCandidate.color"
+    [image]="aCandidate.image"></app-person>
+  <app-person [class.selected-p]="selected == 0" (click)="select(0)"
+   [ngClass]="{
+      'custom-big': category.candidates.length <=3 ,
+      'custom-normal': category.candidates.length> 3 && category.candidates.length <=5 ,
+      'custom-small': category.candidates.length> 5 }"
     [name]="'Voto en blanco'" [number]="null" [color]="'#fff'" [image]="'blank_vote'"></app-person>
 </div>

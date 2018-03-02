@@ -16,7 +16,6 @@ import { VotingComponent } from './components/voting/voting.component';
 @NgModule({
   declarations: [
     AppComponent,
-    /* GeneratedComponent, */
     LoginComponent,
     PersonComponent,
     CategoryComponent,

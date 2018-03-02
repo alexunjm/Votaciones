@@ -21,6 +21,7 @@ export class CategoryComponent implements OnInit {
 
   select(index) {
     this.selected = index;
+    /* console.log(this.selected); */
   }
 
 }

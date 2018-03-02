@@ -3,28 +3,32 @@
     "name": "personero",
     "candidates": [
       {
-        "name": "Daniela Zapata",
-        "image": "woman",
-        "number": 1,
-        "color": "#e83e8c"
-      },
-      {
-        "name": "Esteban Zapata",
+        "name": "Brayan",
+        "lastname": "Zuluaga",
         "image": "man",
-        "number": 2,
+        "number": 1,
         "color": "#683ee8"
       },
       {
-        "name": "Daniela Alzate",
+        "name": "Daniela",
+        "lastname": "Zapata",
         "image": "woman",
+        "number": 2,
+        "color": "#e83e8c"
+      },
+      {
+        "name": "Juan David",
+        "lastname": "Tangarife",
+        "image": "man",
         "number": 3,
         "color": "#48e83e"
       },
       {
-        "name": "Alonso Zapata",
-        "image": "man",
+        "name": "Sara",
+        "lastname": "Correa",
+        "image": "woman",
         "number": 4,
-        "color": "#e5e83e"
+        "color": "#48e83e"
       }
     ]
   },
@@ -32,28 +36,39 @@
     "name": "contralor",
     "candidates": [
       {
-        "name": "Cristian Florez",
+        "name": "Julian",
+        "lastname": "Gutierrez",
         "image": "man",
         "number": 1,
         "color": "#e83e8c"
       },
       {
-        "name": "Federico Florez",
+        "name": "Adrian",
+        "lastname": "Arboleda",
         "image": "man",
         "number": 2,
         "color": "#683ee8"
       },
       {
-        "name": "Cristina Bustos",
-        "image": "woman",
+        "name": "Cristian",
+        "lastname": "Florez",
+        "image": "man",
         "number": 3,
-        "color": "#48e83e"
+        "color": "#683ee8"
       },
       {
-        "name": "Hector Herrera",
+        "name": "Santiago",
+        "lastname": "Gaviria",
         "image": "man",
         "number": 4,
-        "color": "#e5e83e"
+        "color": "#683ee8"
+      },
+      {
+        "name": "Cristian",
+        "lastname": "Medina",
+        "image": "man",
+        "number": 6,
+        "color": "#683ee8"
       }
     ]
   }

@@ -1,8 +1,11 @@
-<figure class="figure position-relative" [ngClass]="{'container custom-margin': number == null}" (click)="onClicked()">
+<figure class="figure position-relative d-block" [ngClass]="{'container custom-margin': number == null}" (click)="onClicked()">
   <img src="assets/images/{{image}}.svg" class="figure-img img-fluid rounded-i" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption *ngIf="number" class="figure-caption d-flex align-items-end">
     <div class="color-box" [style.background]="color"></div>
-    <div class="custom-inline-right">{{ name }}</div>
+    <div class="custom-inline-right">
+      <div>{{ name }}</div>
+      <div>{{ lastname }}</div>
+    </div>
   </figcaption>
   <figcaption *ngIf="number" class="fixed-top position-absolute text-right c-number"><span class="rounded-n">#{{ number }}</span></figcaption>
 </figure>

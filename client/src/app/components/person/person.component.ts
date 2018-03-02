@@ -9,6 +9,7 @@ export class PersonComponent implements OnInit {
 
   @Input() image: string;
   @Input() name: string;
+  @Input() lastname: string;
   @Input() color: string;
   @Input() number: string;
 

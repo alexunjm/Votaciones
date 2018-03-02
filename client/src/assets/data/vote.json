@@ -3,19 +3,22 @@
     "name": "Profesor representante al consejo directivo",
     "candidates": [
       {
-        "name": "Daniela Zapata",
-        "image": "woman",
-        "number": 1,
-        "color": "#e83e8c"
-      },
-      {
-        "name": "Esteban Zapata",
+        "name": "Alexander",
+        "lastname": "Galeano",
         "image": "man",
-        "number": 2,
+        "number": 1,
         "color": "#683ee8"
       },
       {
-        "name": "Daniela Alzate",
+        "name": "Angela",
+        "lastname": "Guzman",
+        "image": "woman",
+        "number": 2,
+        "color": "#e83e8c"
+      },
+      {
+        "name": "Nora",
+        "lastname": "Barrera",
         "image": "woman",
         "number": 3,
         "color": "#48e83e"
@@ -26,14 +29,16 @@
     "name": "Alumno representante al consejo directivo",
     "candidates": [
       {
-        "name": "Cristian Florez",
+        "name": "Sebastian",
+        "lastname": "Zapata",
         "image": "man",
         "number": 1,
         "color": "#e83e8c"
       },
       {
-        "name": "Federico Florez",
-        "image": "man",
+        "name": "Geraldin",
+        "lastname": "Mosquera",
+        "image": "woman",
         "number": 2,
         "color": "#683ee8"
       }
