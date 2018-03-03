@@ -5,30 +5,30 @@
       {
         "name": "Brayan",
         "lastname": "Zuluaga",
-        "image": "man",
+        "image": "brayan.jpg",
         "number": 1,
         "color": "#f1ff46"
       },
       {
         "name": "Daniela",
         "lastname": "Zapata",
-        "image": "woman",
+        "image": "daniela.jpg",
         "number": 2,
         "color": "#5446ff"
       },
       {
-        "name": "Juan David",
-        "lastname": "Tangarife",
-        "image": "man",
-        "number": 3,
-        "color": "#ff4646"
-      },
-      {
         "name": "Sara",
         "lastname": "Correa",
-        "image": "woman",
-        "number": 4,
+        "image": "sara.jpg",
+        "number": 3,
         "color": "#7aff46"
+      },
+      {
+        "name": "Juan David",
+        "lastname": "Tangarife",
+        "image": "juandavid.jpg",
+        "number": 4,
+        "color": "#ff4646"
       }
     ]
   },
@@ -38,35 +38,35 @@
       {
         "name": "Julian",
         "lastname": "Gutierrez",
-        "image": "man",
+        "image": "julian.jpg",
         "number": 1,
         "color": "#f1ff46"
       },
       {
         "name": "Adrian",
         "lastname": "Arboleda",
-        "image": "man",
+        "image": "adrian.jpg",
         "number": 2,
         "color": "#5446ff"
       },
       {
         "name": "Cristian",
         "lastname": "Florez",
-        "image": "man",
+        "image": "cristianf.jpg",
         "number": 3,
         "color": "#ff4646"
       },
       {
         "name": "Santiago",
         "lastname": "Gaviria",
-        "image": "man",
+        "image": "santiago.jpg",
         "number": 4,
         "color": "#7aff46"
       },
       {
         "name": "Cristian",
         "lastname": "Medina",
-        "image": "man",
+        "image": "cristianm.jpg",
         "number": 6,
         "color": "#e546ff"
       }

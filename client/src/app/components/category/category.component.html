@@ -7,7 +7,7 @@
       'custom-big': category.candidates.length <= 3,
       'custom-normal': category.candidates.length > 3 && category.candidates.length <= 5,
       'custom-small': category.candidates.length > 5
-    }"
+    }" class="custom-border-p"
     [name]="aCandidate.name" [lastname]="aCandidate.lastname"
     [number]="aCandidate.number" [color]="aCandidate.color"
     [image]="aCandidate.image"></app-person>
@@ -15,6 +15,7 @@
    [ngClass]="{
       'custom-big': category.candidates.length <= 3 ,
       'custom-normal': category.candidates.length > 3 && category.candidates.length <= 5 ,
-      'custom-small': category.candidates.length > 5 }"
-    [name]="'Voto en blanco'" [number]="null" [color]="'#fff'" [image]="'blank_vote'"></app-person>
+      'custom-small': category.candidates.length > 5
+    }" class="custom-border-p"
+    [name]="'Voto en blanco'" [number]="null" [color]="'#fff'" [image]="'blank_vote.svg'"></app-person>
 </div>

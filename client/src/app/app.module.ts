@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { PersonComponent } from './components/person/person.component';
 import { CategoryComponent } from './components/category/category.component';
 import { VotingComponent } from './components/voting/voting.component';
+import { ResultComponent } from './components/result/result.component';
+import { ResultPersonComponent } from './components/result-person/result-person.component';
+import { TextFlowDownComponent } from './components/text-flow-down/text-flow-down.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { VotingComponent } from './components/voting/voting.component';
     LoginComponent,
     PersonComponent,
     CategoryComponent,
-    VotingComponent
+    VotingComponent,
+    ResultComponent,
+    ResultPersonComponent,
+    TextFlowDownComponent
   ],
   imports: [
     BrowserModule,

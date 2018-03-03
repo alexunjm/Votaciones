@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row" *ngFor="let category of categories; let i = index">
+    <div class="col">
+      <app-result-person *ngIf="category.candidates.length"
+        [ngClass]="{ 'flex-row-reverse': i % 2 == 0 }" [index]="i"
+        class="d-flex justify-content-center align-items-stretch" [name]="category.candidates[0].name"
+        [lastname]="category.candidates[0].lastname" [number]="category.candidates[0].number" [category]="category.name"
+        [color]="category.candidates[0].color" [image]="category.candidates[0].image"></app-result-person>
+      <app-result-person *ngIf="!category.candidates.length"
+        [ngClass]="{ 'flex-row-reverse': i % 2 == 0 }" [index]="i"
+        class="d-flex justify-content-center align-items-stretch" [blank]="true"
+        [image]="'blank_vote.svg'" [category]="category.name"></app-result-person>
+    </div>
+  </div>
+</div>

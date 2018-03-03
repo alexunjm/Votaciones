@@ -1,6 +1,31 @@
 <div class="d-flex">
-  <app-category *ngFor="let aCategory of categories" [category]="aCategory"></app-category>
+  <app-category *ngFor="let aCategory of categories" [category]="aCategory" (selectedC)="selectedCandidate(aCategory.name, $event)"></app-category>
 </div>
 <div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-success">Votar</button>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="showVote()">
+     Votar
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">¿Estas Seguro de tu Voto?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-result [categories]="categoriesSelected">
+        </app-result>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="submitVote()">Estoy Seguro</button>
+      </div>
+    </div>
+  </div>
 </div>

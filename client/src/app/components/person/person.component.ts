@@ -13,18 +13,14 @@ export class PersonComponent implements OnInit {
   @Input() color: string;
   @Input() number: string;
 
-  @Output() clicked = new EventEmitter<string>();
 
   constructor() {
-
-    /* this.image = 'man'; */
   }
 
   ngOnInit() {
   }
 
   onClicked() {
-    this.clicked.emit('Esto funciona!');
   }
 
 }

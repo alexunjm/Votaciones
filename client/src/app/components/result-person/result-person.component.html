@@ -1,0 +1,16 @@
+<!-- <div class="custom-rotate-up d-flex align-items-end"
+   [ngClass]="{ 'custom-rotate-rup': index % 2 != 0,
+    'custom-rotate-rdown': index % 2 == 0
+   }"
+>{{ category }}</div> -->
+<app-text-flow-down [textToSplit]="category"></app-text-flow-down>
+<div class="custom-img-container">
+  <img src="assets/images/{{image}}" class="figure-img img-fluid rounded-i" alt="{{ lastname }}">
+</div>
+<div class="custom-data-container d-flex align-items-center" *ngIf="!blank">
+  <div class="color-box" [style.background]="color"><span class="rounded-n">#0{{ number }}</span></div>
+  <div class="custom-inline-right">
+    <div>{{ name }}</div>
+    <div>{{ lastname }}</div>
+  </div>
+</div>

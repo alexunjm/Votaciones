@@ -40,12 +40,24 @@ app-person {
 }
 
 app-person {
-  border: 1px solid #aaa;
-  border-radius: 5px;
   margin: 5px;
   padding: 5px 10px 0px;
   cursor: pointer;
   min-height:  180px;
+}
+
+.custom-border-p {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.custom-full-height {
+  height: 100%;
+}
+
+.custom-img-container {
+  width: 180px;
+  padding: 0px 30px;
 }
 
 .selected-p {
@@ -59,4 +71,30 @@ app-person {
 
 app-category {
   flex:  1;
+}
+
+.modal.custom-modal-d {
+  display:  block;
+}
+
+.custom-rotate-rup {
+  /* Rotate div */
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+    transform: rotate(-90deg);
+}
+
+.custom-rotate-rdown {
+  /* Rotate div */
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+}
+
+span.custom-no-space {
+    padding: 0;
+    margin: 0;
+    line-height: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
