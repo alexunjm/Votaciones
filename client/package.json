@@ -1,7 +1,6 @@
 {
   "name": "client",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,6 +9,16 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "keywords": [
+    "angular4",
+    "ng",
+    "javascript",
+    "js",
+    "votaciones",
+    "iepedregal"
+  ],
+  "author": "Alexander Jaramillo <alexunjm@gmail.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.0",
