@@ -14,6 +14,7 @@ import { VotingComponent } from './components/voting/voting.component';
 import { ResultComponent } from './components/result/result.component';
 import { ResultPersonComponent } from './components/result-person/result-person.component';
 import { TextFlowDownComponent } from './components/text-flow-down/text-flow-down.component';
+import { ChartsResultComponent } from './components/charts-result/charts-result.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TextFlowDownComponent } from './components/text-flow-down/text-flow-dow
     VotingComponent,
     ResultComponent,
     ResultPersonComponent,
-    TextFlowDownComponent
+    TextFlowDownComponent,
+    ChartsResultComponent
   ],
   imports: [
     BrowserModule,
