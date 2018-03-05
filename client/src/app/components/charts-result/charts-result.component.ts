@@ -28,15 +28,15 @@ export class ChartsResultComponent implements OnInit {
 
     return [
       {
-        elementId: 'chart_div1',
+        elementId: 'chart_1',
         options: {
-          'title': 'Elecciones para personero',
+          'title': 'Personero',
           'width': 500,
           'height': 450,
           'is3D': true,
+          /* tooltip: { textStyle: { color: '#FF0000' }, showColorCode: true }, */
           /* colors: ['#e0440e', '#e6693e', '#ec8f6e', '#eee', '#f6c7b6'], */
-          chartArea: { left: 0, width: '100%', height: '55%', backgroundColor: { stroke: '#0abc55' } },
-          tooltip: { textStyle: { color: '#FF0000' }, showColorCode: true }
+          chartArea: { left: 50, width: '100%', height: '55%' }
         },
         dataCols: [
           { type: 'string', name: 'Nombre' },
@@ -49,12 +49,13 @@ export class ChartsResultComponent implements OnInit {
           ['Voto en Blanco', 25]
         ]
       }, {
-        elementId: 'chart_div2',
+        elementId: 'chart_2',
         options: {
-          'title': 'Elecciones para contralor',
-          'width': 600,
+          'title': 'Contralor',
+          'width': 500,
           'height': 450,
-          'is3D': true
+          'is3D': true,
+          chartArea: { left: 50, width: '100%', height: '55%' }
         },
         dataCols: [
           { type: 'string', name: 'Nombre' },
