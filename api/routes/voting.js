@@ -7,7 +7,7 @@ var md_auth = require('../middlewares/authentication');
 
 var api = express.Router();
 
-api.get('/testVoting', VotingController.testVoting);
+api.post('/vote', md_auth.ensureAuth, VotingController.submitVote);
 
 
 module.exports = api;

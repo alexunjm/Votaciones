@@ -63,7 +63,7 @@ var saveUser = (req, res) => {
 						if (err) return res.status(500).send({ status: 'error', message: 'Error al guardar el usuario'})
 		
 						if(userStored) {
-							return res.status(200).send({user: userStored});
+							return res.status(200).send({ status: 'ok', user: userStored});
 						} else {
 							return res.status(404).send({status: 'error', message: 'no se pudo registrar el usuario'});
 						}
