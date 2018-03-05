@@ -13,7 +13,7 @@ export class SampleDataService {
     public _http: HttpClient,
     /* public _httpHeaders: HttpHeaders, */
   ) {
-    this.url = GLOBAL.url;
+    this.url = GLOBAL.url.dataResource + 'vote.1.json';
   }
 
   getData() {

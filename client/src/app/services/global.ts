@@ -1,5 +1,8 @@
 export let GLOBAL = {
-  url: 'assets/data/vote.1.json'
+  url: {
+    dataResource: 'assets/data/',
+    api: 'http://localhost:3800/api/'
+  }
   /* url: 'assets/data/vote.json' */
 };
 
