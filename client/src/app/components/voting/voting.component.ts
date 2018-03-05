@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SampleDataService } from '../../services/sample-data.service';
 import { arrayMap } from '../../services/global';
+import { VotingService } from '../../services/voting';
 
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.scss'],
-  providers: [SampleDataService]
+  providers: [SampleDataService, VotingService]
 })
 export class VotingComponent implements OnInit {
 
   categories: any;
   categoriesSelected: any;
   selectedC: any;
+  submitting: boolean;
 
   constructor(
-    private _dataService: SampleDataService
+    private _dataService: SampleDataService,
+    private _votingService: VotingService
   ) {
     this._dataService.getData().subscribe(
       data => {
@@ -27,6 +30,7 @@ export class VotingComponent implements OnInit {
     );
     this.selectedC = {};
     this.categoriesSelected = [];
+    this.submitting = false;
   }
 
   ngOnInit() {
@@ -50,6 +54,22 @@ export class VotingComponent implements OnInit {
   }
 
   submitVote() {
+
+    if (this.submitting) { return; }
+
+    this.submitting = true;
+    this._votingService.submit(arrayMap(this.categoriesSelected, (category, index, initialArray) => {
+      return {
+        name: category.name,
+        number: category.candidates[0].number
+      };
+    }, this)).subscribe(response => {
+      alert(response['message']);
+      location.reload();
+    }, error => {
+      alert('Ha ocurrido un error. Favor contactar a la persona que da soporte a la jornada');
+      console.log(error);
+    });
   }
 
 }
