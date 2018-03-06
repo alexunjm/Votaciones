@@ -3,13 +3,13 @@
 /* var path = require('path'); */
 var moment = require('moment');
 const async = require('async');
-/* var mongoosePaginate = require('mongoose-pagination'); */
 
 var Vote = require('../models/vote');
+var Election = require('../models/election');
+var Category = require('../models/categorie');
 
 var submitVote = (req, res) => {
 	var params = req.body;
-	/* console.log(params); */
 
 	if (!params[0].name && !params[0].vote) return res.status(500).send({ status: 'error', message: 'No has enviado un voto válido'})
 
@@ -33,16 +33,37 @@ var submitVote = (req, res) => {
 };
 
 var results = (req, res) => {
+	var params = req.body;
+
+	if (!params.election) return res.status(500).send({ status: 'error', message: 'No has enviado un parámetro válido' })
+	var categoryF = [];
 	async.waterfall([
 		(cb) => {
+			Election.findById(params.election, function (err, found) {
+				cb(null, found['categories']);
+			});
+		},
+		(data, cb) => {
+			async.mapSeries(data, (category, cbMap) => {
+				Category.findById(category, function (err, found) {
+					categoryF.push(found);
+					cbMap(null, found['name']);
+				});
+			}, cb);
+		},
+		(data, cb) => {
 			Vote.aggregate([{
 				$group: {
 					_id: '$elected.name'
 				}
 			}, {
 				$unwind: "$_id"
-			}, ], cb);
-		}, 
+			}, {
+				$match: {
+					_id: { $in: data }
+				}
+			}], cb);
+		},
 		(data, cb) => {
 			async.mapSeries(data, (category, cbMap) => {
 				Vote.aggregate([{
@@ -50,7 +71,7 @@ var results = (req, res) => {
 				}, {
 					$group: {
 						_id: '$elected.number',
-						total_votos: { $sum: { $cond: [{ $eq: ['$elected.name', category._id] }, 1, 0] } }
+						total_votos: { $sum: { $cond: [{ $eq: ['$elected.name', category._id] }, 1, 0] } },
 					}
 				}], (error, result) => {
 					cbMap(null, {
@@ -58,7 +79,7 @@ var results = (req, res) => {
 						result: result.map(dato => {
 							return {
 								number: dato._id,
-								quantity: dato.total_votos
+								quantity: dato.total_votos,
 							};
 						})
 					});
@@ -67,11 +88,34 @@ var results = (req, res) => {
 		}
 	], (error, data) => {
 		if(error) console.log(error);
-		return res.status(200).send({ status: 'ok', message: 'Resumen de resultados', data, error });
+		return res.status(200).send({ status: 'ok', message: 'Resumen de resultados', data, categories: categoryF, error });
 	});
 };
 
+var elections = (req, res) => {
+	async.waterfall([
+		(cb) => {
+			Election.find({}).exec( (err, found) => {
+				cb(null, found);
+			});
+		},
+		(data, cb) => {
+			cb(null, data);/* 
+			async.mapSeries(data, (election, cbMap) => {
+				
+				Category.findById(category, function (err, found) {
+					categoryF.push(found);
+					cbMap(null, found['name']);
+				});
+			}, cb); */
+		}
+	], (error, data) => {
+		return res.status(200).send({ status: 'ok', message: 'Elecciones activas', data, error });
+	});
+}
+
 module.exports = {
 	submitVote,
-	results
+	results,
+	elections
 }

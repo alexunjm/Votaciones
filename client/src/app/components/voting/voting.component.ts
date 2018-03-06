@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { SampleDataService } from '../../services/sample-data.service';
 import { arrayMap } from '../../services/global';
-import { VotingService } from '../../services/voting';
+import { DataService } from '../../services/data.service';
+import { VotingService } from '../../services/voting.service';
 
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.scss'],
-  providers: [SampleDataService, VotingService]
+  providers: [DataService, VotingService]
 })
 export class VotingComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class VotingComponent implements OnInit {
   submitting: boolean;
 
   constructor(
-    private _dataService: SampleDataService,
+    private _dataService: DataService,
     private _votingService: VotingService
   ) {
     this._dataService.getData().subscribe(

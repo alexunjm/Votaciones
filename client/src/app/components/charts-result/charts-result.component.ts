@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { VotingService } from '../../services/voting';
 import { arrayMap } from '../../services/global';
+import { VotingService } from '../../services/voting.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 declare const google: any;
 
 @Component({
@@ -12,12 +13,15 @@ declare const google: any;
 export class ChartsResultComponent implements OnInit {
 
   config: any;
+  election: string;
 
   constructor(
-    private _votingService: VotingService
+    private _votingService: VotingService,
+    private _route: ActivatedRoute,
+    private _router: Router
   ) {
-    this.config = this.getSampleConfig();
-    this._votingService.getResults().subscribe(response => {
+    this.getElection();
+    this._votingService.getResults(this.election).subscribe(response => {
       if (response['error']) {
         console.log(response);
       } else {
@@ -41,7 +45,10 @@ export class ChartsResultComponent implements OnInit {
           };
         }, this);
       }
-    }, error => {});
+    }, error => {
+      console.log(error);
+      this.config = [];
+    });
   }
 
   ngOnInit() {
@@ -54,50 +61,14 @@ export class ChartsResultComponent implements OnInit {
     }, 500);
   }
 
-  getSampleConfig() {
+  getElection() {
+    this._route.params.subscribe(params => {
+      const electionT = params['election'];
 
-    return [
-      {
-        elementId: 'chart_1',
-        options: {
-          'title': 'Personero',
-          'width': 500,
-          'height': 450,
-          'is3D': true,
-          /* tooltip: { textStyle: { color: '#FF0000' }, showColorCode: true }, */
-          /* colors: ['#e0440e', '#e6693e', '#ec8f6e', '#eee', '#f6c7b6'], */
-          chartArea: { left: 50, width: '100%', height: '55%' }
-        },
-        dataCols: [
-          { type: 'string', name: 'Nombre' },
-          { type: 'number', name: 'Votos' },
-        ],
-        dataRows: [
-          ['Sara', 30],
-          ['Daniela', 20],
-          ['Tangarife', 15],
-          ['Voto en Blanco', 25]
-        ]
-      }, {
-        elementId: 'chart_2',
-        options: {
-          'title': 'Contralor',
-          'width': 500,
-          'height': 450,
-          'is3D': true,
-          chartArea: { left: 50, width: '100%', height: '55%' }
-        },
-        dataCols: [
-          { type: 'string', name: 'Nombre' },
-          { type: 'number', name: 'Votos' },
-        ],
-        dataRows: [
-          ['Santiago', 30],
-          ['Adrian', 20],
-          ['Voto en Blanco', 25]
-        ]
+      if (electionT) {
+        this.election = electionT;
       }
-    ];
+    });
   }
 
   drawChart() {

@@ -15,6 +15,7 @@ import { ResultComponent } from './components/result/result.component';
 import { ResultPersonComponent } from './components/result-person/result-person.component';
 import { TextFlowDownComponent } from './components/text-flow-down/text-flow-down.component';
 import { ChartsResultComponent } from './components/charts-result/charts-result.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ChartsResultComponent } from './components/charts-result/charts-result.
     ResultComponent,
     ResultPersonComponent,
     TextFlowDownComponent,
-    ChartsResultComponent
+    ChartsResultComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

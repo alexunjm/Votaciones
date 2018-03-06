@@ -5,7 +5,7 @@ import { Candidate } from '../models/category';
 import { GLOBAL } from './global';
 
 @Injectable()
-export class SampleDataService {
+export class DataService {
 
   url: string;
 
