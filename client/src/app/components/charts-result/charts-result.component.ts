@@ -1,17 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { VotingService } from '../../services/voting';
+import { arrayMap } from '../../services/global';
 declare const google: any;
 
 @Component({
   selector: 'app-charts-result',
   templateUrl: './charts-result.component.html',
-  styleUrls: ['./charts-result.component.scss']
+  styleUrls: ['./charts-result.component.scss'],
+  providers: [VotingService]
 })
 export class ChartsResultComponent implements OnInit {
 
   config: any;
 
-  constructor() {
-    this.config = this.getConfig();
+  constructor(
+    private _votingService: VotingService
+  ) {
+    this.config = this.getSampleConfig();
+    this._votingService.getResults().subscribe(response => {
+      if (response['error']) {
+        console.log(response);
+      } else {
+        this.config = arrayMap(response['data'], (category) => {
+          return {
+            elementId: 'chart_' + category.name,
+            options: {
+              'title': category.name,
+              'width': 500,
+              'height': 450,
+              'is3D': true,
+              chartArea: { left: 50, width: '100%', height: '55%' }
+            },
+            dataCols: [
+              { type: 'string', name: '#0' + category.result[0].number },
+              { type: 'number', name: 'Votos' },
+            ],
+            dataRows: arrayMap(category.result, element => {
+              return ['#0' + element.number, element.quantity];
+            }, this)
+          };
+        }, this);
+      }
+    }, error => {});
   }
 
   ngOnInit() {
@@ -24,7 +54,7 @@ export class ChartsResultComponent implements OnInit {
     }, 500);
   }
 
-  getConfig() {
+  getSampleConfig() {
 
     return [
       {

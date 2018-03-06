@@ -61,7 +61,7 @@ export class VotingComponent implements OnInit {
     this._votingService.submit(arrayMap(this.categoriesSelected, (category, index, initialArray) => {
       return {
         name: category.name,
-        number: category.candidates[0].number
+        number: category.candidates.length ? category.candidates[0].number : 0
       };
     }, this)).subscribe(response => {
       alert(response['message']);

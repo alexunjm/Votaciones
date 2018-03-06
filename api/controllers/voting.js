@@ -2,6 +2,7 @@
 
 /* var path = require('path'); */
 var moment = require('moment');
+const async = require('async');
 /* var mongoosePaginate = require('mongoose-pagination'); */
 
 var Vote = require('../models/vote');
@@ -31,6 +32,60 @@ var submitVote = (req, res) => {
 
 };
 
+var results = (req, res) => {
+	async.waterfall([
+		(cb) => {
+			Vote.aggregate([{
+				$group: {
+					_id: '$elected.name'
+				}
+			}, {
+				$unwind: "$_id"
+			}, ], cb);
+		}, 
+		(data, cb) => {
+			async.mapSeries(data, (category, cbMap) => {
+				Vote.aggregate([{
+					$unwind: "$elected"
+				}, {
+					$group: {
+						_id: '$elected.number',
+						total_votos: { $sum: { $cond: [{ $eq: ['$elected.name', category._id] }, 1, 0] } }
+					}
+				}], (error, result) => {
+					cbMap(null, {
+						name: category._id,
+						result: result.map(dato => {
+							return {
+								number: dato._id,
+								quantity: dato.total_votos
+							};
+						})
+					});
+				});
+			}, cb);
+		}
+	], (error, data) => {
+		if(error) console.log(error);
+		return res.status(200).send({ status: 'ok', message: 'Resumen de resultados', data, error });
+	});/* 
+	var data = Vote.aggregate([{
+		$group: {
+			_id: '$elected.number',
+			total_votos: { $sum: 1 },
+			declinadas: { $sum: { $cond: [{ $eq: ['$elected.name', 'personero'] }, 1, 0] } },
+			aprobadas: { $sum: { $cond: [{ $eq: ['$estado', 2] }, 1, 0] } },
+			redimidas: { $sum: { $cond: [{ $eq: ['$estado', 3] }, 1, 0] } }
+		}
+	}]).then(data => {
+		return res.status(200).send({ status: 'ok', message: 'Resumen de resultados', results: data });
+	}, error => {
+		console.log(error);
+		return res.status(200).send({ status: 'error', message: 'Resumen de resultados', results: {} });
+	}); */
+};
+
 module.exports = {
-	submitVote
+	submitVote,
+	results
 }
