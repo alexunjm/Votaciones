@@ -11,12 +11,7 @@ export class TextFlowDownComponent implements OnInit {
   @Input() textToSplit: string;
 
   constructor() {
-    /* this.text = 'hola mundo'.split(''); */
   }
-/*
-  ngDoCheck() {
-    console.log(this.textToSplit.textContent);
-  } */
 
   ngOnInit() {
     this.text = this.textToSplit.split('');

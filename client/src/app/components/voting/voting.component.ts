@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { arrayMap } from '../../services/global';
 import { DataService } from '../../services/data.service';
 import { VotingService } from '../../services/voting.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.scss'],
-  providers: [DataService, VotingService]
+  providers: [VotingService]
 })
 export class VotingComponent implements OnInit {
 
@@ -15,14 +16,18 @@ export class VotingComponent implements OnInit {
   categoriesSelected: any;
   selectedC: any;
   submitting: boolean;
+  election: string;
 
   constructor(
-    private _dataService: DataService,
-    private _votingService: VotingService
+    private _votingService: VotingService,
+    private _route: ActivatedRoute,
+    private _router: Router
   ) {
-    this._dataService.getData().subscribe(
-      data => {
-        this.categories = data;
+    this.getElection();
+    this._votingService.getCategories(this.election).subscribe(
+      response => {
+        console.log(response);
+        this.categories = response['data'];
       },
       error => {
         console.log(error);
@@ -34,6 +39,16 @@ export class VotingComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getElection() {
+    this._route.params.subscribe(params => {
+      const electionT = params['election'];
+
+      if (electionT) {
+        this.election = electionT;
+      }
+    });
   }
 
   selectedCandidate(categoryN, number) {

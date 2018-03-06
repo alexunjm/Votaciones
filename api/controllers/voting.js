@@ -114,8 +114,34 @@ var elections = (req, res) => {
 	});
 }
 
+var categories = (req, res) => {
+	var params = req.body;
+
+	if (!params.election) return res.status(500).send({ status: 'error', message: 'No has enviado un parámetro válido' })
+	
+
+	async.waterfall([
+		(cb) => {
+			Election.findById(params.election, (err, found) => {
+				cb(null, found);
+			});
+		},
+		(data, cb) => {
+			async.mapSeries(data.categories, (category, cbMap) => {
+				
+				Category.findById(category, function (err, found) {
+					cbMap(null, found);
+				});
+			}, cb);
+		}
+	], (error, data) => {
+		return res.status(200).send({ status: 'ok', message: 'Elecciones activas', data, error });
+	});
+}
+
 module.exports = {
 	submitVote,
 	results,
-	elections
+	elections,
+	categories
 }

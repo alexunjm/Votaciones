@@ -74,6 +74,21 @@ app-person {
   padding: 0.5rem 1rem !important;
 }
 
+.no-m-no-p {
+  margin: 0;
+  padding: 0;
+}
+
+span.hola {
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+}
+
+.row.fixed-width {
+    flex-basis:  150px;
+}
+
 app-category {
   flex:  1;
 }

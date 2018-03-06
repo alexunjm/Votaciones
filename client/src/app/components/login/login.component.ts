@@ -1,22 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [UserService]
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  pass: string;
+
+  constructor(
+    private _userS: UserService,
+    private router: Router
+  ) {
+    [this.email, this.pass] = ['', ''];
+  }
 
   ngOnInit() {
   }
 
   resetForm() {
+    this.email = '';
+    this.pass = '';
   }
 
-  onSubmit() {
-    this.resetForm();
+  doLogin() {
+    this._userS.login({email: this.email, pass: this.pass}).subscribe(response => {
+      localStorage.setItem('identityToken', JSON.stringify(response));
+      this.resetForm();
+      this.router.navigate(['/dashboard']);
+    }, error => {
+      console.error(error);
+    });
   }
 
 }

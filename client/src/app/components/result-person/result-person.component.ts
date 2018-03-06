@@ -15,6 +15,7 @@ export class ResultPersonComponent implements OnInit {
   @Input() category: string;
   @Input() index: number;
   @Input() blank: boolean;
+  textCat: Array<string>;
 
   constructor() {
     this.index = 0;
@@ -22,6 +23,7 @@ export class ResultPersonComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.textCat = this.category.split(' ');
   }
 
 }

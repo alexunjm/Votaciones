@@ -3,7 +3,13 @@
     'custom-rotate-rdown': index % 2 == 0
    }"
 >{{ category }}</div> -->
-<app-text-flow-down [textToSplit]="category"></app-text-flow-down>
+<app-text-flow-down *ngIf="textCat.length <= 1" [textToSplit]="category"></app-text-flow-down>
+<div class="row fixed-width" *ngIf="textCat.length >1 ">
+  <span class="hola">
+    {{ category }}
+  </span>
+</div>
+
 <div class="custom-img-container">
   <img src="assets/images/{{image}}" class="figure-img img-fluid rounded-i" alt="{{ lastname }}">
 </div>
