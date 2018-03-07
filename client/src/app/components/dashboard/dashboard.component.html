@@ -1,10 +1,12 @@
-<div class="row">
-  <div *ngFor="let link of links" class="col-12">
-    <a routerLink="/vote/{{link._id}}">ir a votaciones de {{ link.name }}</a>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let link of links" class="dashboard col-sm-5 col-md-3 border rounded">
+      <a routerLink="/vote/{{link._id}}">ir a votaciones de {{ link.name }}</a>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div *ngFor="let link of links" class="col-12">
-    <a routerLink="/result/{{link._id}}">ir a resultados de {{ link.name }}</a>
+  <div class="row">
+    <div *ngFor="let link of links" class="dashboard col-sm-5 col-md-3 border rounded">
+      <a routerLink="/result/{{link._id}}">ir a resultados de {{ link.name }}</a>
+    </div>
   </div>
 </div>
