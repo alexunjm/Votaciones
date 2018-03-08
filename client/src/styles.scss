@@ -81,7 +81,12 @@ app-person {
 
 .dashboard.border {
     padding: 50px 30px;
-    margin: 10px;
+    /* margin: 10px; */
+    height: 100%;
+}
+
+.dashboard.padding {
+    padding: 30px;
 }
 
 span.hola {
