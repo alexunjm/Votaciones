@@ -19,12 +19,24 @@ export class UserService {
 
   login(data) {
     data.getToken = true;
-    console.log(data);
+    /* console.log(data); */
     const params = JSON.stringify(data);
     return this._http.post(this.url + 'login', params, {/** headers **/
       // tslint:disable-next-line:max-line-length
       headers: this.headers
     });
+  }
+
+  logout() {
+    return this._http.post(this.url + 'logout', null, {/** headers **/
+      // tslint:disable-next-line:max-line-length
+      headers: this.headers.set('authorization', this.getToken())
+    });
+  }
+
+  getToken() {
+    const identity = JSON.parse(localStorage.getItem('identityToken'));
+    return identity && identity.token ? identity.token : null;
   }
 
 }

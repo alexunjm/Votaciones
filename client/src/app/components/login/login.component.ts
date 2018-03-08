@@ -17,15 +17,14 @@ export class LoginComponent implements OnInit {
     private _userS: UserService,
     private router: Router
   ) {
-    [this.email, this.pass] = ['', ''];
+    this.resetForm();
   }
 
   ngOnInit() {
   }
 
   resetForm() {
-    this.email = '';
-    this.pass = '';
+    [this.email, this.pass] = ['', ''];
   }
 
   doLogin() {

@@ -4,15 +4,17 @@ import { LoginComponent } from './components/login/login.component';
 import { VotingComponent } from './components/voting/voting.component';
 import { ChartsResultComponent } from './components/charts-result/charts-result.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { UserGuard } from './services/user.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'vote/:election', component: VotingComponent },
-  { path: 'result/:election', component: ChartsResultComponent },
-  { path: '**', component: LoginComponent }/*
-  { path: 'detail/:id', component: HeroDetailComponent },*/
+  { path: 'logout', component: LogoutComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [UserGuard] },
+  { path: 'vote/:election', component: VotingComponent, canActivate: [UserGuard] },
+  { path: 'result/:election', component: ChartsResultComponent, canActivate: [UserGuard] },
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({

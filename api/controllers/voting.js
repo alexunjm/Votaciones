@@ -95,19 +95,12 @@ var results = (req, res) => {
 var elections = (req, res) => {
 	async.waterfall([
 		(cb) => {
-			Election.find({}).exec( (err, found) => {
+			Election.find({status: 'on'}).exec( (err, found) => {
 				cb(null, found);
 			});
 		},
 		(data, cb) => {
-			cb(null, data);/* 
-			async.mapSeries(data, (election, cbMap) => {
-				
-				Category.findById(category, function (err, found) {
-					categoryF.push(found);
-					cbMap(null, found['name']);
-				});
-			}, cb); */
+			cb(null, data);
 		}
 	], (error, data) => {
 		return res.status(200).send({ status: 'ok', message: 'Elecciones activas', data, error });

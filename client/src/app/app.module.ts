@@ -16,7 +16,13 @@ import { ResultPersonComponent } from './components/result-person/result-person.
 import { TextFlowDownComponent } from './components/text-flow-down/text-flow-down.component';
 import { ChartsResultComponent } from './components/charts-result/charts-result.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
+/**
+ * Services
+ */
+import { UserService } from './services/user.service';
+import { UserGuard } from './services/user.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ResultPersonComponent,
     TextFlowDownComponent,
     ChartsResultComponent,
-    DashboardComponent
+    DashboardComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   providers: [
     /* HttpClient, HttpHeaders */
+    UserService,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })
