@@ -6,6 +6,9 @@ correr servidor node que autorecargue con cada cambio
 correr base de datos mongo
 
 consola2
-cd api && npm run run:db
+cd Votaciones/api && npm run run:db
 consola1
-cd api && npm start
+cd Votaciones/api && npm start
+
+
+cd Votaciones/client && ng serve
