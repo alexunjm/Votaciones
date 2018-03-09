@@ -34,9 +34,19 @@ export class UserService {
     });
   }
 
+  registerIdentity(identity) {
+    localStorage.setItem('identity', identity);
+    return true;
+  }
+
   getToken() {
-    const identity = JSON.parse(localStorage.getItem('identityToken'));
+    const identity = JSON.parse(localStorage.getItem('identity'));
     return identity && identity.token ? identity.token : null;
+  }
+
+  hasRole(role) {
+    const identity = JSON.parse(localStorage.getItem('identity'));
+    return identity.user.role  === role;
   }
 
 }

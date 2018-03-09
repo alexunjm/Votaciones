@@ -96,9 +96,11 @@ var loginUser = (req, res) => {
 				if(check) {
 					
 					if(params.getToken) {
-						/** Devolver token */
 						/** Generar token */
-						return res.status(200).send({token: jwt.createToken(user)});
+						const token = jwt.createToken(user);
+						/** Devolver token */
+						user.pass = undefined;
+						return res.status(200).send({ token, user });
 					} else {
 						/** Devolvemos datos de usuario */
 						user.pass = undefined;

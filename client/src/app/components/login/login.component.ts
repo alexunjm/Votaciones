@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this._userS.login({email: this.email, pass: this.pass}).subscribe(response => {
-      localStorage.setItem('identityToken', JSON.stringify(response));
+      this._userS.registerIdentity(JSON.stringify(response));
+      /* localStorage.setItem('identityToken', JSON.stringify(response)); */
       this.resetForm();
       this.router.navigate(['/dashboard']);
     }, error => {
