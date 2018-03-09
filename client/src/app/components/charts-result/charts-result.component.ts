@@ -53,7 +53,7 @@ export class ChartsResultComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      if (google.visualization) {
+      if (google.visualization && this.config) {
         this.drawChart();
       } else {
         this.ngOnInit();
