@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
       this.links = response['data'].filter(link => {
 
         const match = link.permissions.filter(aRole => {
-          return this._userS.hasRole(aRole);
+          return this._userS.hasRole(aRole) || this.isAdmin;
         });
 
         return match.length ? link : null;
