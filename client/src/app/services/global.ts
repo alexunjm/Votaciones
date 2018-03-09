@@ -1,7 +1,7 @@
 export let GLOBAL = {
   url: {
     dataResource: 'assets/data/',
-    api: 'http://http://port-3800.votaciones-iep-alexanderjaramillo4iep817149.codeanyapp.com/api/'
+    api: 'http://port-3800.votaciones-iep-alexanderjaramillo4iep817149.codeanyapp.com/api/'
   }
   /* url: 'assets/data/vote.json' */
 };
