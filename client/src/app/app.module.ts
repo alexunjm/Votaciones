@@ -2,11 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-/* import { GeneratedComponent } from './generated/generated.component'; */
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { PersonComponent } from './components/person/person.component';
 import { CategoryComponent } from './components/category/category.component';
@@ -45,7 +43,6 @@ import { UserGuard } from './services/user.guard';
     HttpClientModule
   ],
   providers: [
-    /* HttpClient, HttpHeaders */
     UserService,
     UserGuard
   ],
