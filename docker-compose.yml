@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  api:
+    image: node:8-alpine
+    volumes:
+      - ./api:/api
+    working_dir: /api
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
+    ports:
+      - 80:3800
+    command: >
+      sh -c "npm i && npm start"
+  mongo:
+      image: mongo:3.6.11
+      expose:
+        - 27017
+      volumes:
+        - ./db-voting:/data/db

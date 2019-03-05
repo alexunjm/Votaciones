@@ -7,12 +7,12 @@ var port_api = 3800;
 
 var db_port = 27017;
 var db = 'jornada_votaciones_iep';
-var url = `mongodb://localhost:${db_port}/${db}`;
+var url = `mongodb://mongo:${db_port}/${db}`;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(url, {useMongoClient: true}).then(() => {
+mongoose.connect(url, { useMongoClient: true }).then(() => {
 	console.log(`La conexión a la base de datos '${db}' por el puerto ${db_port} se ha establecido correctamente!!`);
-	
+
 	//crear servidor
 	app.listen(port_api, () => {
 		console.log(`Servidor corriendo en puerto http://localhost:${port_api}`)
