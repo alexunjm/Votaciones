@@ -1,7 +1,7 @@
 export let GLOBAL = {
   url: {
     dataResource: 'assets/data/',
-    api: 'http://localhost:3800/api/'
+    api: 'http://localhost/api/'
   }
 };
 

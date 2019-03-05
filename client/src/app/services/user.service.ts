@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Candidate } from '../models/category';
 import { GLOBAL } from './global';
 
 @Injectable()
@@ -19,17 +17,15 @@ export class UserService {
 
   login(data) {
     data.getToken = true;
-    /* console.log(data); */
+    console.log(data);
     const params = JSON.stringify(data);
     return this._http.post(this.url + 'login', params, {/** headers **/
-      // tslint:disable-next-line:max-line-length
       headers: this.headers
     });
   }
 
   logout() {
     return this._http.post(this.url + 'logout', null, {/** headers **/
-      // tslint:disable-next-line:max-line-length
       headers: this.headers.set('authorization', this.getToken())
     });
   }
@@ -46,7 +42,7 @@ export class UserService {
 
   hasRole(role) {
     const identity = JSON.parse(localStorage.getItem('identity'));
-    return identity.user.role  === role;
+    return identity.user.role === role;
   }
 
 }
