@@ -3,7 +3,8 @@
     <div class="col">
       <ul class="nav nav-tabs">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menú</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Menú</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
           </div>
@@ -19,7 +20,7 @@
           <a routerLink="/vote/{{link._id}}">ir a votaciones de {{ link.name }}</a>
         </div>
       </div>
-      <div *ngIf="!links.length" class="col-12">
+      <div *ngIf="!links || !links.length" class="col-12">
         No hay votaciones disponibles actualmente
       </div>
     </div>
