@@ -10,7 +10,7 @@ var Person = Schema({
 
 var VoteSchema = Schema({
 	elected: [Person],
-	emmiter_user_id: { type: Schema.ObjectId, ref: 'User' },
+	emitter_user_id: { type: Schema.ObjectId, ref: 'User' },
 	created_at: String
 });
 

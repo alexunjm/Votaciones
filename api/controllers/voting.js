@@ -11,10 +11,10 @@ var Category = require('../models/categorie');
 var submitVote = (req, res) => {
 	var params = req.body;
 
-	if (!params[0].name && !params[0].vote) return res.status(500).send({ status: 'error', message: 'No has enviado un voto válido'})
+	if (!params[0].name && !params[0].vote) return res.status(500).send({ status: 'error', message: 'No has enviado un voto válido' })
 
 	var vote = new Vote();
-	vote.emmiter_user_id = req.user.sub;
+	vote.emitter_user_id = req.user.sub;
 	vote.created_at = moment().unix();
 	vote.elected = [];
 	params.forEach(aVote => {
@@ -87,7 +87,7 @@ var results = (req, res) => {
 			}, cb);
 		}
 	], (error, data) => {
-		if(error) console.log(error);
+		if (error) console.log(error);
 		return res.status(200).send({ status: 'ok', message: 'Resumen de resultados', data, categories: categoryF, error });
 	});
 };
@@ -95,7 +95,7 @@ var results = (req, res) => {
 var elections = (req, res) => {
 	async.waterfall([
 		(cb) => {
-			Election.find({status: 'on'}).exec( (err, found) => {
+			Election.find({ status: 'on' }).exec((err, found) => {
 				cb(null, found);
 			});
 		},
@@ -111,7 +111,7 @@ var categories = (req, res) => {
 	var params = req.body;
 
 	if (!params.election) return res.status(500).send({ status: 'error', message: 'No has enviado un parámetro válido' })
-	
+
 
 	async.waterfall([
 		(cb) => {
@@ -121,7 +121,7 @@ var categories = (req, res) => {
 		},
 		(data, cb) => {
 			async.mapSeries(data.categories, (category, cbMap) => {
-				
+
 				Category.findById(category, function (err, found) {
 					cbMap(null, found);
 				});
