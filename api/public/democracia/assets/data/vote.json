@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Profesor representante al consejo directivo",
+    "candidates": [
+      {
+        "name": "Alexander",
+        "lastname": "Galeano",
+        "image": "man.svg",
+        "number": 1,
+        "color": "#f1ff46"
+      },
+      {
+        "name": "Angela",
+        "lastname": "Guzman",
+        "image": "woman.svg",
+        "number": 2,
+        "color": "#5446ff"
+      },
+      {
+        "name": "Nora",
+        "lastname": "Barrera",
+        "image": "woman.svg",
+        "number": 3,
+        "color": "#ff4646"
+      }
+    ]
+  },
+  {
+    "name": "Alumno representante al consejo directivo",
+    "candidates": [
+      {
+        "name": "Sebastian",
+        "lastname": "Zapata",
+        "image": "man.svg",
+        "number": 1,
+        "color": "#f1ff46"
+      },
+      {
+        "name": "Geraldin",
+        "lastname": "Mosquera",
+        "image": "woman.svg",
+        "number": 2,
+        "color": "#5446ff"
+      }
+    ]
+  }
+]

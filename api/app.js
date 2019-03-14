@@ -13,6 +13,8 @@ var voting_router = require('./routes/voting');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + '/public'));
+
 //cors
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -26,6 +28,19 @@ app.use((req, res, next) => {
 //rutas
 app.use('/api', user_router);
 app.use('/api', voting_router);
+
+/// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+	if (req.method.toLowerCase() == 'post') {
+
+		var err = new Error(`Path or Method Not Found: ${req.method} to ${req.protocol + '://' + req.get('host') + req.originalUrl}`);
+		err.status = 404;
+		next(err);
+	} else {
+		// const path = isProduction ? '/saas' : '/saasw'
+		res.redirect('/democracia')
+	}
+});
 
 //exportar
 module.exports = app;
