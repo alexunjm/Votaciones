@@ -1,7 +1,7 @@
 export let GLOBAL = {
   url: {
     dataResource: 'assets/data/',
-    api: 'http://http://votacionesiep.tk/api/'
+    api: 'http://votacionesiep.tk/api/'
   }
 };
 

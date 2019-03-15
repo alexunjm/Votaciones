@@ -1,9 +1,16 @@
 'use strict'
 
 var express = require('express');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'),
+	cors = require('cors');
 
 var app = express();
+
+//cors
+app.use(cors({
+	origin: 'http://votacionesiep.tk',
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 //cargar rutas
 var user_router = require('./routes/user');
@@ -15,15 +22,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 
-//cors
-app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-
-	next();
-});
 
 //rutas
 app.use('/api', user_router);
